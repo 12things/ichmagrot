@@ -1,0 +1,63 @@
+#new-book {
+  #book_title {
+	  font-size: 30px;
+	  //@include column(20, true);
+	  width: 775px;
+  }
+}
+
+#teaser {
+  letter-spacing: -2px;
+  text-align: center;
+  position: relative;
+  padding-top: 10px;
+  padding-bottom: 5px;
+  font-family: 	Georgia,Times,serif;
+  
+  .one {
+	  font-size: 40px;
+    font-weight: bold;
+    color: #555;
+    @include text-shadow(0,1px,0,rgba(0,0,0,1));
+  }
+  .two {
+    position: relative;
+    top: -15px;
+	  font-size: 30px;
+	  color: #888;
+	  @include text-shadow(0,1px,0,rgba(0,0,0,0.7));
+  }
+}
+
+ul#choose-template {
+  @include inline-block-list;
+  li {	
+  	@include column(5);
+    @include append-bottom(2em);
+    label.template {
+	  height: 180px;
+	  border: 1px solid #ccc;
+	  @include border-radius(3px);
+	  position: relative;
+	  display: block;
+	  .description {
+	    position: absolute;
+	    bottom: 0px;
+	    width: 100%;
+	    text-align: right;
+	    background-color: #fff;
+	    @include opacity(0.8);
+	    input {
+		  margin-right: 10px;
+		}
+	  }
+	}
+  }
+  li.nospacing {
+	@include column(5, true);
+  }
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: Georgia,Times,serif;
+}

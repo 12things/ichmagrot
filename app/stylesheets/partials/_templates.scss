@@ -1,0 +1,145 @@
+body.main {
+  background: transparent url(/images/bg_repeater.jpg) repeat;
+}
+
+// pattern8
+body.girly, label.template-girly {
+  background: transparent url(/images/girly.png) repeat;
+}
+
+body.men, label.template-men {
+  background: transparent url(/images/men.png) repeat;
+}
+
+body.marriage, label.template-marriage {
+  background: transparent url(/images/marriage.png) repeat;
+}
+
+// http://www.backgroundlabs.com/
+body.school, label.template-school {
+  background: transparent url(/images/school.jpg) repeat;
+}
+
+// http://shizoo.frozen-media.de/patterns.php
+body.classic, label.template-classic {
+  background: transparent url(/images/classic.png) repeat;
+}
+
+body.geeks, label.template-geeks {
+  background: transparent url(/images/geeks.gif) repeat;
+}
+
+body.sport, label.template-sport {
+  background: transparent url(/images/sport.gif) repeat;
+}
+
+body.birthday, label.template-birthday {
+  background: transparent url(/images/birthday.jpg) repeat;
+}
+
+body.bp {
+	ul.page-entries {
+		font-size: 17px;
+		margin: 0px;
+		padding: 0px;
+		li {
+			@include clearfix;
+			margin-bottom: 2em;
+			font-size: 120%;
+			.title {
+				font-weight: bold;
+				margin-right: 2px;
+			}
+			div.content {
+
+			}
+			input.content {
+				width: 775px;
+				font-size: 20px;
+			}
+		}
+	}
+	
+	.page-image {
+	  //position: absolute;
+	  //right:50px;
+      float: right;
+	  
+	  img {
+	    @include box-shadow;
+	    @include rotate(4deg);
+	  } 
+	}
+	.turn-pages {
+	  position: relative;
+	  top: -35px;
+	  @include clearfix;
+	  a,
+	  a:visited,
+	  a:hover,
+	  a:active {
+	    color: #555;
+	    text-decoration: none;
+	    font-size: 130%;
+	    line-height: 16px; 
+	  }
+	  a:hover {
+	    color: red;
+	  }
+	  
+	  .previous {
+	    float: left;
+	    background: transparent url('/images/arrow_left_blue_round.png') no-repeat top left;
+	    padding-left: 24px;
+	  }
+	  .next {
+	    float: right;
+	    background: transparent url('/images/arrow_right_blue_round.png') no-repeat top right;
+	    padding-right: 24px;
+	  }
+	}
+	
+	h1.book-title {
+	  @include column(24, true);
+	  background-color: #e5e5e5;
+	  border-top: 1px solid #ccc;
+	  border-bottom: 1px solid #aaa;
+	  position: absolute;
+	  left: 0px;
+	  top: 75px;
+	  text-align: center;
+	  padding: 30px 0;
+
+	  @include text-shadow(0px,1px,0px,#fff);
+	  @include linear-gradient(color-stops(#e5e5e5, #ccc));   
+	  
+	  &.black-leather {
+  	  color: #eee;
+      border-top-color: #fff;
+      border-bottom-color: #fff;
+  	  background: black url('/images/title_black_leather.jpg') no-repeat scroll top left;
+  	  @include text-shadow(0px,1px,0px,rgba(255,255,255,0.6));	    
+	  }
+
+	  &.old-book {
+  	  color: #eee;
+      border-top-color: #fff;
+      border-bottom-color: #fff;
+  	  background: black url('/images/title_old_book.jpg') no-repeat scroll top left;
+  	  @include text-shadow(0px,1px,0px,rgba(255,255,255,0.6));	    
+	  }
+	}
+	
+	div.book-friends {
+      margin-top: 200px;
+	}
+	
+	div.login {
+	  margin: 200px auto 50px;
+	  width: 300px;
+	  input {
+	    width: 300px;
+	    font-size: 1.8em;	
+	  }
+	}
+}

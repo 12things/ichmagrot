@@ -1,0 +1,175 @@
+// This import applies a global reset to any page that imports this stylesheet.
+@import "blueprint/reset";
+
+// Import all the default blueprint modules so that we can access their mixins.
+@import "blueprint";
+@import "blueprint/grid";
+
+// Import the non-default scaffolding module.
+@import "blueprint/scaffolding";
+
+// Import compass fashisl
+@import "compass/utilities";
+@import "compass/css3/opacity";
+@import "compass/css3/box-shadow";
+
+$corporate-red: #FF0000;
+
+// To configure blueprint, edit the partials/base.sass file.
+@import "partials/base";
+@import "partials/buttons";
+@import "partials/landing";
+@import "partials/templates";
+
+
+// But Compass recommends that you scope your blueprint styles
+// So that you can better control what pages use blueprint
+// when stylesheets are concatenated together.
+@include blueprint-scaffolding("body.bp");
+
+body.bp {
+  @include blueprint-typography(true);
+  @include blueprint-utilities;
+  @include blueprint-debug;
+  @include blueprint-interaction;
+  // Remove the scaffolding when you're ready to start doing visual design.
+  // Or leave it in if you're happy with how blueprint looks out-of-the-box
+}
+
+form.bp {
+  @include blueprint-form; }
+
+// Page layout can be done using mixins applied to your semantic classes and IDs:
+body {
+  #container {
+    @include container;
+    #wrapper {
+	  padding: 50px 0px;
+	  background-color: #fff;
+	  @include prepend-top(120px);
+	  @include append-bottom(60px);
+	  @include box-shadow($default-box-shadow-color, $default-box-shadow-h-offset, $default-box-shadow-v-offset, $default-box-shadow-blur, $default-box-shadow-spread, $default-box-shadow-inset);
+      #content {
+        position: relative;
+  	    @include prepend(2);
+  	    @include append(2);
+        h1 {
+		  margin: 10px 0 50px 0;
+		}
+      }
+    }
+  }
+  #header {
+    @include column($blueprint-grid-columns);
+  }
+}
+
+div#notice, div#error {
+  div {
+	padding: 25px 35px;
+	margin-bottom: 50px;
+	font-size: 130%;
+	color: #555;
+	background: #f9cd3a;
+	border: 1px solid #f7b738;
+	font-weight: bold;
+	@include text-shadow(0,1px,0,rgba(255,255,255,0.7));
+	@include border-radius(2px);
+  }
+  
+  position: absolute;
+  top: 0px;
+  @include column(20);
+}
+
+div#error {
+  div {
+    color: #333;
+    background: red;
+    border: 1px solid #cc0000;    
+  }
+}
+
+#header {
+  div#controls {
+	a {
+		color: #999;
+		text-decoration: none;
+	}
+	color: #999;
+	@include border-radius;
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	background-color: #fff;
+	padding: 5px;
+  }
+
+  h1 {
+	a {
+	  text-decoration: none;
+	  color: #fff;
+	  font-family: Georgia, Times, serif;
+	  letter-spacing: -1px;
+	  @include text-shadow(0,1px,0,rgba(0,0,0,0.5));
+	}
+	margin-bottom: 50px;
+	background: $corporate-red;
+	width: 200px;
+	text-align: center;
+	color: #fff;
+	padding: 10px;
+	@include box-shadow(rgba(0,0,0,0.5));
+  }
+}
+
+.info {
+  color: #777;
+  font-size: 80%;
+  font-weight: normal;
+}
+
+h2.step {
+  position: relative;
+  margin: 2em 0 2em 0;
+  
+  .bignum {
+    display: block;
+    width: 50px;
+    height: 50px;
+    color: red;
+    font-size: 50px;
+    @include border-radius(25px);
+    font-family: Georgia, Times, serif;  
+    position: absolute;
+    top: -25px;
+    left: -50px;
+    vertical-align: middle;
+  }  
+}
+
+#book_field_list {
+  @include no-bullets;
+  padding: 0;
+  margin-bottom: 1em;
+  li {
+    margin-bottom: 0.5em;
+  }
+}
+
+body.bp ul.friends {
+  @include horizontal-list;
+  padding: 0;
+  margin-bottom: 1em; 
+}
+
+input  {
+  border: 1px solid #ccc;
+  padding: 3px 6px;
+  background: #f9f9f9;
+  @include border-radius(2px);
+}
+.field_with_errors input {
+  border-color: red;
+  background: #ffcccc;
+}

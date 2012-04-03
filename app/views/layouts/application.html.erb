@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ich mag rot! - Dein Online-Freundebuch</title>
+  <%= stylesheet_link_tag 'screen', :media => 'screen' %>
+  <!-- [if IE]
+  <%= stylesheet_link_tag 'ie', :media => 'screen' %>
+  -->
+  <%= javascript_include_tag :defaults, :combined => true %>
+  <%= csrf_meta_tag %>
+  <meta name="description" content="Erstelle dein privates Freundebuch. Kostenlos, einfach und ohne Anmeldung!" />
+	<meta name="keywords" content="freundebuch, friendbook, kostenlos, poesiealbum" />
+	<meta content="mailto+http:sha1:185b7bbebc9747d795c23fce8f19453ddde095fc" name="microid">
+	
+</head>
+<body class="bp <%= ((@book.nil? || @book.new_record?) ? 'main' : @book.template) %>">
+
+<div id="container" class="noshowgrid">
+	<div id="header">
+		<h1><%= link_to('ich mag rot!', new_book_path) %></h1>
+
+		<div id="controls">
+			<% if current_user %><% if current_user.current_book %><%= link_to("Buch: „#{current_user.current_book.title}“", current_user.current_book) %>&nbsp;|&nbsp;<% end %>Dein Code: <strong style="color:red;"><%= current_user.key %></strong>&nbsp;|&nbsp;<%= link_to('Logout', logout_path) %>&nbsp;|&nbsp;<% end %><%= link_to 'Impressum', imprint_path %>
+		</div>
+    <%= mail_to 'feedback@12things.de', 'Feedback', :subject => "Feedback", :encode => 'javascript', :class => 'feedback button special' %>
+	</div>
+	
+	<div id="wrapper">
+		<div id="content">
+      <%= yield %>
+    </div>
+  </div>
+</div>
+
+<% if RAILS_ENV=='production'%>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-15353144-6']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<% end %>
+</body>
+</html>

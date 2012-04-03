@@ -1,0 +1,24 @@
+<ul id="book_field_list">
+  <% book.fields.each do |field| %>
+    <li id="book_field_<%= field.id %>">
+      <%= image_tag 'move.png', :class => 'icon-move' %>
+      <%= field.name %>
+      <%= link_to 'Löschen', destroy_field_book_path(book, :field_id => field.id), :remote => true, :method => :delete %>
+    </li>
+  <% end %>
+</ul>
+
+<% unless addable_fields.empty? %>
+  <%= form_tag(add_field_book_path(book), :remote => true) do -%>
+    <div class="info">Neues Feld hinzufügen:</div>
+    <%= select_tag "new_field", options_from_collection_for_select(addable_fields, "id", "name") %>
+    <div><%= submit_tag 'Hinzufügen' %></div>
+  <% end -%>
+<% end %>
+
+<% if book.fields.size > 1 %>
+  <%= sortable_element("book_field_list", 
+    :url => sort_fields_book_path(book),
+    :constraint => :vertical,
+    :handle => 'icon-move') %>
+<% end %>

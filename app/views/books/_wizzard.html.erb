@@ -1,0 +1,19 @@
+<% if @book.progress < 3 %>
+  <h2 class="step"><span class="bignum">3.</span><span class="title">Lege fest, welche Fragen deinen Freunden gestellt werden.</span>
+  </h2>
+  <div id="book_fields">
+    <%= render "book_fields", {:book => @book, :addable_fields => @book.addable_fields} %>
+  </div>
+  <div style="margin-top:2em">
+    <%= link_to 'Weiter', edit_book_page_path(@book, @book.page_for_user(current_user)), :class => "button special" %>
+  </div>
+<% elsif @book.progress < 4 %>
+  <h2 class="step"><span class="bignum">4.</span><span class="title">Füll deine eigene Seite aus.</span>
+  </h2>
+  <div><%= link_to 'Deine Seite ausfüllen', edit_book_page_path(@book, @book.page_for_user(current_user)), :class => "button special" %></div>
+<% elsif @book.progress < 5 %>
+  <%= render 'invite' %>
+  <div style="margin-top:2em;">
+    <%= link_to 'Später einladen', book_path(@book, {:skip_step => true}), :class => 'button special' %>
+  </div>
+<% end %>

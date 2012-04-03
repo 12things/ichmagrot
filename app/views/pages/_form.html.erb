@@ -1,0 +1,38 @@
+<%= form_for([@book,@page], :html => { :multipart => true }) do |f| %>
+
+  <%= f.hidden_field :book_id, :value => @book.id %>
+  
+  <% if @book.field_ids %>
+    <ul class="page-entries">
+      <li class="field">
+        <div class="title"><%= f.label :image, 'Bild' %></div>
+        <%= f.file_field :image %>
+      </li>
+      
+      <%= f.fields_for(:user, @page.user) do |uf| %>
+        <% if @book.owner? current_user %>
+        <li class="field">
+          <div class="title"><%= uf.label :email, 'E-Mail' %> <span class="info">(wird nie veröffentlicht)</span></div>
+          <div class="info">Merke dir deinen Code <span style="color:red;font-weight:bold;"><%= current_user.key %></span> oder gib deine E-Mail ein</div>
+          <%= uf.text_field :email, :size => 50, :class => "content" %>
+        </li>
+        <% end %>
+        <li class="field">
+          <div class="title"><%= uf.label :name %></div>
+          <%= uf.text_field :name, :value => (@page.user.name=='Ich' ? '' : @page.user.name), :size => 50, :class => "content" %>
+        </li>
+      <% end %>
+
+	    <% @book.field_ids.each do |id| %>
+	      <% field = Field.find(id) %>
+	      <li class="field">
+	        <div class="title"><%= label_tag "fields[#{field.id}]", field.name %></div>
+	        <%= text_field_tag "fields[#{field.id}]",  @page.values.find_by_field_id(field.id) ? @page.values.find_by_field_id(field.id).content : nil, :size => 50, :class => "content" %>
+	      </li>
+	    <% end %>
+    </ul>
+  <% end %>
+  <div class="actions">
+    <%= f.submit 'Speichern' %>
+  </div>
+<% end %>

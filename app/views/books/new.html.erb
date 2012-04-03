@@ -1,0 +1,43 @@
+<%= form_for(@book) do |f| %>
+<div id="new-book">
+  
+	<div id="teaser">
+	  <div class="one">Erstelle dein privates Freundebuch.</div>
+	  <div class="two">Kostenlos, einfach und ohne Anmeldung!</div>
+	</div>
+
+  <h2 class="step">
+	  <span class="bignum">1.</span>
+    <span class="title">Wähle einen <strong>Titel</strong> für dein Buch?</span>
+  </h2>
+
+	<div class="field clearfix">
+	  <% f.label :title %> <%= f.text_field :title %>
+	</div>
+	
+	
+	<h2 class="step">
+	  <span class="bignum">2.</span>
+    <span class="title">Wähle ein <strong>Design</strong> für dein Buch?</span>
+  </h2>
+  
+	<ul id="choose-template" class="clearfix">
+		<% @templates.each_with_index do |template,i| %>
+		<li class="<%= 'nospacing' if (i+1)%4 == 0 %>">
+			<label for="template_id_<%= template[:id] %>" class="template template-<%= template[:id] %>">
+		  	<span class="description">
+			    <strong><%= template[:title] %></strong>
+					<span><%= radio_button_tag(:template_id, template[:id], @selected_template_id==template[:id]) %></span>
+				</span>
+		  </label>
+		</li>
+		<% end %>
+	</ul>
+
+	<%= f.submit 'Buch anlegen' %>
+
+<% end %>
+
+</div>
+
+<% link_to 'Back', books_path %>

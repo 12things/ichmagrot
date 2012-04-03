@@ -1,0 +1,10 @@
+
+<h2 class="step"><% if @book.in_progress? %><span class="bignum">5.</span><% end %><span class="title">Lade deine Freunde ein:</span>
+</h2>
+
+<%= form_tag(create_multiple_book_pages_path(@book)) do -%>
+  <div class="info">E-Mail-Adressen oder Namen mit Komma getrennt:</div>
+  <div><%= text_area_tag 'emails', nil, :size => "60x10" %></div>
+  <div><%= submit_tag 'Freunde einladen' %></div>
+<% end -%>
+

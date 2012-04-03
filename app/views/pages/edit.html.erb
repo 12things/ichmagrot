@@ -1,0 +1,8 @@
+<h1><%= @book.title %></h1>
+
+<% if @book.owner?(current_user) && @book.in_progress? && @book.progress < 4 %>
+  <h2 class="step"><span class="bignum">4.</span><span class="title">Füll deine eigene Seite aus.</span>
+  </h2>
+<% end %>
+
+<%= render 'form' %>

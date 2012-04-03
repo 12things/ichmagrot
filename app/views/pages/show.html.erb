@@ -1,0 +1,51 @@
+<%= render "shared/notice", {:notice => notice} %>
+<div class="turn-pages">
+  <%  if @page.higher_item %>
+    <%= link_to 'Zurück', [@book, @page.higher_item], :class => 'previous' %>
+  <% else %>
+    <%= link_to 'Zurück zum Cover', @book, :class => 'previous' %>
+  <% end %>
+  <%  if @page.lower_item %>
+    <%= link_to 'Weiter', [@book, @page.lower_item], :class => 'next' %>
+  <% end %>
+</div>
+
+<% if @page.image.file? %>
+  <div class="page-image"><%= image_tag @page.image.url(:medium) %></div>
+<% end %>
+
+<h1><%= @page.book.title %></h1>
+
+<% if @page.never_updated? %>
+  <% if @page.book.owner? current_user %>
+    <h2>
+      <strong><%= @page.user.email %></strong> hat noch nichts ausgefüllt.
+    </h2>
+    <p>
+      Du kannst ihm seinen Code <strong><%= @page.user.key %></strong> nochmal geben oder ihm diesen Link schicken:<br />
+      <%= link_to nil,book_url(@book, {:authkey => @page.user.key}) %>
+    </p>
+  <% end%>
+<% else %>
+  <ul class="page-entries">
+    <li>
+  		<div class="title">Name</div>
+    	<div class="content clearfix"><%= @page.user.name %></div>
+    </li>  
+    <% @page.sorted_values.each do |value| %>
+      <li>
+    		<div class="title"><%= value.field.name %></div>
+      	<div class="content clearfix"><%= value.content == "" ? raw("&nbsp;") : value.content %></div>
+      </li>  
+    <% end %>
+  </ul>
+<% end %>
+
+<% if @page.owner?(current_user) && @page.updateable? %>
+  <%= link_to 'Bearbeiten', edit_book_page_path(@book, @page), :class => "button special" %>
+<% end %>
+<% if @page.book.owner?(current_user) && !@page.owner?(current_user) %>
+  <div>
+    <%= link_to "#{@page.user.email} Löschen", [@book,@page], :confirm => 'Bist du sicher?', :method => :delete, :class => 'button negative' %>
+  </div>
+<% end %>
