@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class BooksController < ApplicationController
   before_filter :check_authenticated, :except => [:new, :create, :show, :imprint]
   before_filter :set_book, :except => [:new, :create, :imprint]

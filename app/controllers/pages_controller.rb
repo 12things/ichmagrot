@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class PagesController < ApplicationController
   before_filter :set_book
   before_filter :set_page, :except => [:create_multiple]

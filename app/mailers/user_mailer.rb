@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class UserMailer < ActionMailer::Base
   layout 'email' # use email.(html|text).erb as the layout
   default :from => "noreply@ichmagrot.de"

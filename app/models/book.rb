@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Book < ActiveRecord::Base
   belongs_to :user
   has_many :pages, :order => "position"

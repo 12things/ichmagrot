@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 Friendbook::Application.routes.draw do
   match 'imprint' => 'books#imprint', :as => :imprint
   

@@ -2,8 +2,8 @@ development:
   adapter: mysql
   database: friendbook_development
   host: localhost
-  username: friend
-  password: book
+  username: root
+  password: 
   encoding: utf8
   pool: 5
   timeout: 5000
@@ -15,8 +15,8 @@ test:
   adapter: mysql
   database: friendbook_test
   host: localhost
-  username: friend
-  password: book
+  username: root
+  password: 
   encoding: utf8
   pool: 5
   timeout: 5000

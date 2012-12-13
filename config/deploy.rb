@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 set :application, "friendbook"
 set :app_url, "ichmagrot.de"
 # ---------------------------------------------------------------------------
