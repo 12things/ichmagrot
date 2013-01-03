@@ -1,3 +1,6 @@
+// Import compass fashisl
+@import "compass3";
+
 // This import applies a global reset to any page that imports this stylesheet.
 @import "blueprint/reset";
 
@@ -8,18 +11,14 @@
 // Import the non-default scaffolding module.
 @import "blueprint/scaffolding";
 
-// Import compass fashisl
-@import "compass/utilities";
-@import "compass/css3/opacity";
-@import "compass/css3/box-shadow";
 
 $corporate-red: #FF0000;
 
 // To configure blueprint, edit the partials/base.sass file.
-@import "partials/base";
-@import "partials/buttons";
-@import "partials/landing";
-@import "partials/templates";
+@import "../partials/base.css.scss";
+@import "../partials/buttons.css.scss";
+@import "../partials/landing";
+@import "../partials/templates";
 
 
 // But Compass recommends that you scope your blueprint styles
@@ -37,46 +36,44 @@ body.bp {
 }
 
 form.bp {
-  @include blueprint-form; }
+@include blueprint-form; }
 
 // Page layout can be done using mixins applied to your semantic classes and IDs:
 body {
   #container {
     @include container;
-    #wrapper {
-	  padding: 50px 0px;
-	  background-color: #fff;
-	  @include prepend-top(120px);
-	  @include append-bottom(60px);
-	  @include box-shadow($default-box-shadow-color, $default-box-shadow-h-offset, $default-box-shadow-v-offset, $default-box-shadow-blur, $default-box-shadow-spread, $default-box-shadow-inset);
+      padding: 50px 0px;
+      background-color: #fff;
+      @include prepend-top(120px);
+      @include append-bottom(60px);
+      @include box-shadow($default-box-shadow-color, $default-box-shadow-h-offset, $default-box-shadow-v-offset, $default-box-shadow-blur, $default-box-shadow-spread, $default-box-shadow-inset);
       #content {
         position: relative;
-  	    @include prepend(2);
-  	    @include append(2);
+        @include prepend(2);
+        @include append(2);
         h1 {
-		  margin: 10px 0 50px 0;
-		}
+          margin: 10px 0 50px 0;
+        }
       }
     }
   }
   #header {
     @include column($blueprint-grid-columns);
   }
-}
 
 div#notice, div#error {
   div {
-	padding: 25px 35px;
-	margin-bottom: 50px;
-	font-size: 130%;
-	color: #555;
-	background: #f9cd3a;
-	border: 1px solid #f7b738;
-	font-weight: bold;
-	@include text-shadow(0,1px,0,rgba(255,255,255,0.7));
-	@include border-radius(2px);
+    padding: 25px 35px;
+    margin-bottom: 50px;
+    font-size: 130%;
+    color: #555;
+    background: #f9cd3a;
+    border: 1px solid #f7b738;
+    font-weight: bold;
+    @include text-shadow(0,1px,0,rgba(255,255,255,0.7));
+    @include border-radius(2px);
   }
-  
+
   position: absolute;
   top: 0px;
   @include column(20);
@@ -91,37 +88,36 @@ div#error {
 }
 
 #header {
-  div#controls {
-	a {
-		color: #999;
-		text-decoration: none;
-	}
-	color: #999;
-	@include border-radius;
-	position: absolute;
-	top: 20px;
-	right: 20px;
-	background-color: #fff;
-	padding: 5px;
+  a {
+    color: #999;
+    text-decoration: none;
   }
-
-  h1 {
-	a {
-	  text-decoration: none;
-	  color: #fff;
-	  font-family: Georgia, Times, serif;
-	  letter-spacing: -1px;
-	  @include text-shadow(0,1px,0,rgba(0,0,0,0.5));
-	}
-	margin-bottom: 50px;
-	background: $corporate-red;
-	width: 200px;
-	text-align: center;
-	color: #fff;
-	padding: 10px;
-	@include box-shadow(rgba(0,0,0,0.5));
-  }
+  color: #999;
+  @include border-radius;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: #fff;
+  padding: 5px;
 }
+
+h1 {
+  a {
+    text-decoration: none;
+    color: #fff;
+    font-family: Georgia, Times, serif;
+    letter-spacing: -1px;
+    @include text-shadow(0,1px,0,rgba(0,0,0,0.5));
+  }
+  margin-bottom: 50px;
+  background: $corporate-red;
+  width: 200px;
+  text-align: center;
+  color: #fff;
+  padding: 10px;
+  @include box-shadow(rgba(0,0,0,0.5));
+}
+
 
 .info {
   color: #777;
@@ -132,7 +128,7 @@ div#error {
 h2.step {
   position: relative;
   margin: 2em 0 2em 0;
-  
+
   .bignum {
     display: block;
     width: 50px;

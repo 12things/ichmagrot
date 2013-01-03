@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.3'
+#gem 'rails', '3.0.3'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -30,7 +30,20 @@ gem 'rails', '3.0.3'
 #   gem 'webrat'
 # end
 
-gem 'mysql'
-gem 'acts_as_list'
-gem 'compass'
+gem 'rails', '= 3.2.8'
+gem 'mysql2'
+ 
+group :assets do
+  gem 'sass-rails',   ">= 3.2.3"
+  gem 'coffee-rails', ">= 3.2.1"
+  gem 'uglifier',     ">= 1.0.3"
+end
+
+gem 'compass-rails', '>= 1.0.3'  
+gem 'anjlab-bootstrap-rails', '>= 2.2', :require => 'bootstrap-rails'
+
+gem 'jquery-rails'
+
 gem 'paperclip', :git => 'http://github.com/thoughtbot/paperclip.git'
+gem 'acts_as_list'
+

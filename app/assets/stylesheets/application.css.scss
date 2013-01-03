@@ -1,0 +1,306 @@
+//  = require_self
+// *= require twitter/bootstrap
+
+@import "compass";
+
+
+$loud-color: #3399ff;
+$light-pale-color: mix($loud-color, #fff, 5%);
+$pale-color: mix($loud-color, #fff, 10%);
+$dark-pale-color: mix($loud-color, #fff, 25%);
+$corporate-red: #FF0000;
+
+#wrapper {
+  padding: 50px 0px;
+  background-color: #fff;
+  margin-top: 120px;
+  margin-bottom: 60px;
+  @include box-shadow();
+}
+
+
+h1#logo {
+  position: absolute;
+  top: 0;
+  background: $corporate-red;
+  width: 200px;
+  text-align: center;
+  color: #fff;
+  padding: 10px;
+  margin: 0;
+  @include box-shadow(2px 2px 2px rgba(0,0,0,0.3));
+
+  a {
+    font-size: 30px;
+    text-decoration: none;
+    color: #fff;
+    font-family: Georgia, Times, serif;
+    letter-spacing: -1px;
+    @include text-shadow(0,1px,0,rgba(0,0,0,0.5));
+  }
+}
+
+
+.info {
+  color: #777;
+  font-size: 80%;
+  font-weight: normal;
+}
+
+h2.step {
+  position: relative;
+  margin: 2em 0 0.5em 0;
+
+  .bignum {
+    display: block;
+    width: 50px;
+    height: 50px;
+    color: red;
+    font-size: 50px;
+    @include border-radius(25px);
+    font-family: Georgia, Times, serif;  
+    position: absolute;
+    top: -7px;
+    left: -50px;
+    vertical-align: middle;
+  }  
+}
+
+#book_field_list {
+  @include no-bullets;
+  padding: 0;
+  margin-bottom: 1em;
+  li {
+    margin-bottom: 0.5em;
+  }
+}
+
+body ul.friends {
+  @include horizontal-list;
+  padding: 0;
+  margin-bottom: 1em; 
+}
+
+input  {
+  border: 1px solid #ccc;
+  padding: 3px 6px;
+  background: #f9f9f9;
+  @include border-radius(2px);
+}
+.field_with_errors input {
+  border-color: red;
+  background: #ffcccc;
+}
+
+#new-book {
+  #book_title {
+    font-size: 30px;
+    width: 775px;
+  }
+}
+
+#teaser {
+  letter-spacing: -2px;
+  text-align: center;
+  position: relative;
+  padding-top: 10px;
+  padding-bottom: 5px;
+  font-family: 	Georgia,Times,serif;
+
+  .one {
+    font-size: 40px;
+    font-weight: bold;
+    color: #555;
+    @include text-shadow(0,1px,0,rgba(0,0,0,1));
+  }
+  .two {
+    position: relative;
+    top: 15px;
+    font-size: 30px;
+    color: #888;
+    @include text-shadow(0,1px,0,rgba(0,0,0,0.7));
+  }
+}
+
+ul#choose-template {
+  @include inline-block-list;
+  li {	
+    margin-bottom: 2em;
+    label.template {
+      height: 180px;
+      width: 180px;
+      border: 1px solid #ccc;
+      @include border-radius(3px);
+      position: relative;
+      display: block;
+      .description {
+        position: absolute;
+        bottom: 0px;
+        width: 100%;
+        text-align: right;
+        background-color: #fff;
+        @include opacity(0.8);
+        input {
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+  li.nospacing {
+  }
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: Georgia,Times,serif;
+}
+
+
+
+
+// Templates
+//
+
+body.main {
+  background: transparent url(/images/bg_repeater.jpg) repeat;
+}
+
+// pattern8
+body.girly, label.template-girly {
+  background: transparent url(/images/girly.png) repeat;
+}
+
+body.men, label.template-men {
+  background: transparent url(/images/men.png) repeat;
+}
+
+body.marriage, label.template-marriage {
+  background: transparent url(/images/marriage.png) repeat;
+}
+
+// http://www.backgroundlabs.com/
+body.school, label.template-school {
+  background: transparent url(/images/school.jpg) repeat;
+}
+
+// http://shizoo.frozen-media.de/patterns.php
+body.classic, label.template-classic {
+  background: transparent url(/images/classic.png) repeat;
+}
+
+body.geeks, label.template-geeks {
+  background: transparent url(/images/geeks.gif) repeat;
+}
+
+body.sport, label.template-sport {
+  background: transparent url(/images/sport.gif) repeat;
+}
+
+body.birthday, label.template-birthday {
+  background: transparent url(/images/birthday.jpg) repeat;
+}
+
+body {
+  ul.page-entries {
+    font-size: 17px;
+    margin: 0px;
+    padding: 0px;
+    li {
+      @include clearfix;
+      margin-bottom: 2em;
+      font-size: 120%;
+      .title {
+        font-weight: bold;
+        margin-right: 2px;
+      }
+      div.content {
+
+      }
+      input.content {
+        width: 775px;
+        font-size: 20px;
+      }
+    }
+  }
+
+  .page-image {
+    //position: absolute;
+    //right:50px;
+    float: right;
+
+    img {
+      @include box-shadow;
+      @include rotate(4deg);
+    } 
+  }
+  .turn-pages {
+    position: relative;
+    top: -35px;
+    @include clearfix;
+    a,
+    a:visited,
+    a:hover,
+    a:active {
+      color: #555;
+      text-decoration: none;
+      font-size: 130%;
+      line-height: 16px; 
+    }
+    a:hover {
+      color: red;
+    }
+
+    .previous {
+      float: left;
+      background: transparent url('/images/arrow_left_blue_round.png') no-repeat top left;
+      padding-left: 24px;
+    }
+    .next {
+      float: right;
+      background: transparent url('/images/arrow_right_blue_round.png') no-repeat top right;
+      padding-right: 24px;
+    }
+  }
+
+  h1.book-title {
+    background-color: #e5e5e5;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #aaa;
+    position: absolute;
+    left: 0px;
+    top: 75px;
+    text-align: center;
+    padding: 30px 0;
+
+    @include text-shadow(0px,1px,0px,#fff);
+    @include background(linear-gradient #e5e5e5 #ccc);   
+
+    &.black-leather {
+      color: #eee;
+      border-top-color: #fff;
+      border-bottom-color: #fff;
+      background: black url('/images/title_black_leather.jpg') no-repeat scroll top left;
+      @include text-shadow(0px,1px,0px,rgba(255,255,255,0.6));	    
+    }
+
+    &.old-book {
+      color: #eee;
+      border-top-color: #fff;
+      border-bottom-color: #fff;
+      background: black url('/images/title_old_book.jpg') no-repeat scroll top left;
+      @include text-shadow(0px,1px,0px,rgba(255,255,255,0.6));	    
+    }
+  }
+
+  div.book-friends {
+    margin-top: 200px;
+  }
+
+  div.login {
+    margin: 200px auto 50px;
+    width: 300px;
+    input {
+      width: 300px;
+      font-size: 1.8em;	
+    }
+  }
+}

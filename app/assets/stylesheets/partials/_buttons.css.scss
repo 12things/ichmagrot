@@ -1,9 +1,5 @@
-@import "compass/utilities/general/float";
-@import "compass/css3/gradient";
-@import "compass/css3/border-radius";
-@import "compass/css3/text-shadow";
-@import "compass/css3/transform";
-@import "blueprint/buttons";
+@import "compass";
+@import "blueprint";
 
 // Use the following HTML code to place the buttons on your site:
 //
@@ -22,7 +18,6 @@ html body.bp {
   a.button,
   button,
   form input[type="submit"] {
-    @include button-button();
     padding: 4px 10px;
     outline: none;
     color: red;
@@ -31,19 +26,19 @@ html body.bp {
 
     border-color: $bottom;
     background-color: $top;
-    @include linear-gradient(color-stops($top, $bottom));
+    @include background(linear-gradient(color-stops($top, $bottom)));
 
     @include border-radius;
     @include text-shadow;
     &:hover {
       background-color: $bottom;
-      @include linear-gradient(color-stops($bottom, $top));
+      @include background(linear-gradient(color-stops($bottom, $top)));
     }
     &:active {
       color: $loud-color;
       border-color: $dark-pale-color;
       background-color: $dark-pale-color;
-      @include linear-gradient(color-stops($pale-color, $dark-pale-color));      
+      @include background(linear-gradient(color-stops($pale-color, $dark-pale-color)));
     }
   }
   
@@ -64,17 +59,17 @@ html body.bp {
     
     border-color: $bottom;
     background-color: $top;
-    @include linear-gradient(color-stops($top, $bottom));
+    @include background(linear-gradient(color-stops($top, $bottom)));
     @include text-shadow(rgba(0,0,0,0.5));
     &:hover {
       background-color: $bottom;
-      @include linear-gradient(color-stops($bottom, $top));
+      @include background(linear-gradient(color-stops($bottom, $top)));
     }    
     &:active {
       outline: none;
       border-color: $dark-pale-color;
       background-color: $dark-pale-color;
-      @include linear-gradient(color-stops($pale-color, $dark-pale-color));      
+      @include background(linear-gradient(color-stops($pale-color, $dark-pale-color)));
     }
   }
 
@@ -87,16 +82,16 @@ html body.bp {
     outline: none;
     border-color: $bottom;
     background-color: $top;
-    @include linear-gradient(color-stops($top, $bottom));
+    @include background(linear-gradient(color-stops($top, $bottom)));
     @include text-shadow(rgba(0,0,0,0.5));
     &:hover {
       background-color: $bottom;
-      @include linear-gradient(color-stops($bottom, $top));
+      @include background(linear-gradient(color-stops($bottom, $top)));
     }
     &:active {
       border-color: $dark-pale-color;
       background-color: $dark-pale-color;
-      @include linear-gradient(color-stops($pale-color, $dark-pale-color));      
+      @include background(linear-gradient(color-stops($pale-color, $dark-pale-color)));      
     }
   }
 
@@ -109,17 +104,17 @@ html body.bp {
     
     border-color: $bottom;
     background-color: $top;
-    @include linear-gradient(color-stops($top, $bottom));
+    @include background(linear-gradient(color-stops($top, $bottom)));
     @include text-shadow(rgba(255,255,255, 0.7));
     &:hover {
       background-color: $bottom;
-      @include linear-gradient(color-stops($bottom, $top));
+      @include background(linear-gradient(color-stops($bottom, $top)));
     }
     &:active {
       outline: none;
       border-color: $dark-pale-color;
       background-color: $dark-pale-color;
-      @include linear-gradient(color-stops($pale-color, $dark-pale-color));      
+      @include background(linear-gradient(color-stops($pale-color, $dark-pale-color)));      
     }
   }
   
